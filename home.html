@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scale BI</title>
+  <link rel="icon" type="image/x-icon" href="scalebi_logo.jpg">
+</head>
+
+<body><!-- Hidden checkbox for CSS-only toggle -->
+  <input type="checkbox" id="sidebarToggle" class="d-none" checked="false"/>
+  <!-- Toggle button -->
+  <label for="sidebarToggle" class="sidebar-toggle-label bg-info" title="Toggle sidebar">
+    <i class="bi bi-list"></i>
+  </label>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul class="list-unstyled m-0 px-3">
+      <li class="mb-3">
+        <a href="#" class="d-flex align-items-center text-decoration-none">
+          <i class="bi bi-house-door me-2"></i>
+          <span class="sidebar-title">Dashboard</span>
+        </a>
+      </li>
+      <li class="mb-3">
+        <a href="#" class="d-flex align-items-center text-decoration-none">
+          <i class="bi bi-graph-up me-2"></i>
+          <span class="sidebar-title">Analytics</span>
+        </a>
+      </li>
+      <li class="mb-3">
+        <a href="#" class="d-flex align-items-center text-decoration-none">
+          <i class="bi bi-people me-2"></i>
+          <span class="sidebar-title">Users</span>
+        </a>
+      </li>
+      <li class="mb-3">
+        <a href="#" class="d-flex align-items-center text-decoration-none">
+          <i class="bi bi-gear me-2"></i>
+          <span class="sidebar-title">Settings</span>
+        </a>
+      </li>
+      <li>
+        <a href="support.html" class="d-flex align-items-center text-decoration-none">
+          <i class="bi bi-telephone-inbound-fill me-2"></i>
+          <span class="sidebar-title">Support</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+  <!-- Main content and navbar -->
+  <nav class="navbar navbar-expand-md mb-4 ms-5">
+    <div class="container-fluid">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <img src="/scalebi_logo.jpg" width="40" height="32" alt="ScaleBI logo">
+        <span class="fs-4">ScaleBI</span>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="me-auto mb-2 px-4 mb-md-0 w-75">
+          <form class="d-flex" role="search">
+
+            <div class="input-group">
+              <span class="input-group-text" id="basic-addon1">
+                <i class="bi bi-magic"></i>
+              </span>
+              <input class="form-control" type="search" placeholder="Ask AI" aria-label="Search">
+            </div>
+
+
+          </form>
+        </div>
+        
+        <button id="darkModeBtn" class="btn px-4">
+          <i class="bi bi-moon"></i>
+          <!-- <i class="bi bi-brightness-high"></i> -->
+        </button>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+            <div class="avatar-wrapper me-2">
+              <img src="https://i.pravatar.cc/40?img=12" alt="" width="40" height="40" class="rounded-circle">
+              <span class="status-dot"></span>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="fw-medium">Sathish Kumar</span>
+              <small class="text-muted">Manager</small>
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="./">Sign out</a></li>
+          </ul>
+        </div>
+        <div class="pos-f-t">
+          <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+              <h5 class="text-white h4">Collapsed content</h5>
+              <span class="text-muted">Toggleable via the navbar brand.</span>
+            </div>
+          </div>
+          <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="main-content ms-5 px-4">
+
+    <!-- KPIs -->
+    <div class="row g-4 mb-2">
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-kpi p-3">
+          <div class="text-secondary small">Databases</div>
+          <div class="fs-3 fw-semibold">5</div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-kpi p-3">
+          <div class="text-secondary small">Confirmed Attendees</div>
+          <div class="fs-3 fw-semibold">932</div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-kpi p-3">
+          <div class="text-secondary small">Sessions</div>
+          <div class="fs-3 fw-semibold">36</div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-kpi p-3">
+          <div class="text-secondary small">Satisfaction</div>
+          <div class="fs-3 fw-semibold">4.7/5</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    
+
+    <div class="row g-4 mt-1 mb-5">
+      <div class="col-lg-6">
+        <div class="card chart-card p-3">
+          <h5>Dashboards</h5>
+          <div id="barChart" class="echart" style="height: 400px;"></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card chart-card p-3">
+          <h5>City-wise Participation</h5>
+          <div id="radarChart" class="echart"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script type="module" src="src/js/main.js"></script>
+</body>
+
+</html>
