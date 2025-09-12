@@ -275,6 +275,59 @@ if (chartViewsTarget) {
 
 }
 
+// Ticket Status Bar
+ const ticketStatusTargert = document.getElementById('ticket_status');
+const myChart = echarts.init(ticketStatusTargert);
+
+// Data sets
+const chartDataSets = {
+  "7":  [18, 12, 3],
+  "30": [55, 42, 10],
+  "custom": [100, 75, 20]
+};
+
+// Make function global
+window.loadChartData = function(period) {
+  const values = chartDataSets[period];
+
+  myChart.setOption({
+    grid: {
+      top: 40,
+      left: 40,
+      right: 20,
+      bottom: 40
+    },
+    xAxis: {
+      type: 'category',
+      data: ['Ticket Created', 'Ticket Resolved', 'Ticket Pending'],
+      axisLabel: {
+        fontSize: 12,
+        fontWeight: 'bold'
+      }
+    },
+    yAxis: {
+      type: 'value',
+      minInterval: 5
+    },
+    series: [
+      {
+        type: 'bar',
+        barWidth: 40,
+        data: [
+          { value: values[0], itemStyle: { color: 'green' } },
+          { value: values[1], itemStyle: { color: 'orange' } },
+          { value: values[2], itemStyle: { color: 'red' } }
+        ],
+        itemStyle: {
+          borderRadius: [6, 6, 0, 0]
+        }
+      }
+    ]
+  });
+};
+
+// Load default
+window.loadChartData("7");
 
 
 
