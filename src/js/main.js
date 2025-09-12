@@ -143,7 +143,7 @@ if (chart1Target) {
           position: 'center',
           fontSize: 20,
           fontWeight: 'bold',
-          formatter: 'Dashboard'
+          formatter: 'Charts'
         },
         data: [{ value: 1, name: '' }],
         tooltip: { show: false },
@@ -191,7 +191,7 @@ if (userChartTarget) {
     },
     series: [
       {
-        name: 'Charts',
+        name: 'Users',
         type: 'pie',
         radius: ['50%', '70%'],
         avoidLabelOverlap: false,
@@ -211,7 +211,7 @@ if (userChartTarget) {
           position: 'center',
           fontSize: 20,
           fontWeight: 'bold',
-          formatter: 'Dashboard'
+          formatter: 'Users'
         },
         data: [{ value: 1 }],
         tooltip: { show: false },
@@ -220,6 +220,62 @@ if (userChartTarget) {
     ]
   });
 }
+
+// Chart views
+const chartViewsTarget = document.getElementById('chart_views');
+if (chartViewsTarget) {
+  const myChart = echarts.init(chartViewsTarget);
+ myChart.setOption({
+  grid: { left: 100, right: 80, top: 20, bottom: 20 },
+  xAxis: {
+    type: 'value',
+    show: false
+  },
+  yAxis: [
+    {
+      type: 'category',
+      inverse: true,
+      data: ['Chart 1', 'Chart 2', 'Chart 3', 'Chart 4', 'Chart 5', 'Others'],
+      axisTick: { show: false },
+      axisLine: { show: false },
+      axisLabel: { color: '#555' }
+    },
+    {
+      type: 'category',
+      inverse: true,
+      position: 'right',
+      offset: 20, // spacing from chart edge
+      data: ['25,000', '15,000', '12,000', '10,000', '5,000', '35,000'],
+      axisTick: { show: false },
+      axisLine: { show: false },
+      axisLabel: {
+        color: '#333',
+        fontWeight: 'bold',
+        align: 'right'
+      }
+    }
+  ],
+  series: [
+    {
+      type: 'bar',
+      data: [
+        { value: 25000, itemStyle: { color: '#8e44ad', borderRadius: [6, 6, 6, 6] } }, // purple
+        { value: 15000, itemStyle: { color: '#3498db', borderRadius: [6, 6, 6, 6] } }, // blue
+        { value: 12000, itemStyle: { color: '#e67e22', borderRadius: [6, 6, 6, 6] } }, // orange
+        { value: 10000, itemStyle: { color: '#e74c3c', borderRadius: [6, 6, 6, 6] } }, // red
+        { value: 5000,  itemStyle: { color: '#27ae60', borderRadius: [6, 6, 6, 6] } }, // green
+        { value: 35000, itemStyle: { color: '#000000', borderRadius: [6, 6, 6, 6] } }  // black
+      ],
+      barWidth: 12,
+      label: { show: false }
+    }
+  ]
+});
+
+
+}
+
+
 
 
 // ...existing code...
