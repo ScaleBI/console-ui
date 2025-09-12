@@ -10,9 +10,11 @@ import Alert from 'bootstrap/js/dist/alert';
 import { Tooltip, Toast, Popover } from 'bootstrap';
 
 import * as echarts from 'echarts';
+import { bottom } from '@popperjs/core';
 
 // Dashboards (safe init only if element exists)
 const barChartTarget = document.getElementById('barChart');
+
 if (barChartTarget) {
   const myChart = echarts.init(barChartTarget);
   myChart.setOption({
@@ -30,6 +32,195 @@ if (barChartTarget) {
     ]
   });
 }
+
+// pie chart
+const pieChartTarget = document.getElementById('pieChart');
+
+if (pieChartTarget) {
+  const myChart = echarts.init(pieChartTarget);
+  myChart.setOption({
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      orient: 'horizontal',
+      bottom: 0,
+      left: 'center'
+    },
+    series: [
+      {
+        name: 'Dashboard',
+        type: 'pie',
+        radius: ['50%', '70%'], // donut effect
+        avoidLabelOverlap: false,
+        label: {
+          show: true,
+          position: 'inside',
+          formatter: '{c}' // show value inside each slice
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 24,
+            fontWeight: 'bold'
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: [
+          { value: 5, name: '> 30 days', itemStyle: { color: '#8e44ad' } },
+          { value: 2, name: '> 7 days && <= 30 days', itemStyle: { color: '#e67e22' } },
+          { value: 1, name: '<= 7 days', itemStyle: { color: '#3498db' } }
+        ]
+      },
+      {
+        // This is a fake series to put text in the center
+        type: 'pie',
+        radius: ['0%', '40%'],
+        label: {
+          position: 'center',
+          fontSize: 20,
+          fontWeight: 'bold',
+          formatter: 'Dashboard'
+        },
+        data: [{ value: 1, name: '' }],
+        tooltip: { show: false },
+        itemStyle: {
+          color: '#fff' // inner circle color
+        }
+      }
+    ]
+  });
+}
+
+// Charts
+const chart1Target = document.getElementById('pieChart_Charts');
+
+if (chart1Target) {
+  const myChart = echarts.init(chart1Target);
+  myChart.setOption({
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      orient: 'horizontal',
+      bottom: 0,
+      left: 'center'
+    },
+    series: [
+      {
+        name: 'Charts',
+        type: 'pie',
+        radius: ['50%', '70%'], // donut effect
+        avoidLabelOverlap: false,
+        label: {
+          show: true,
+          position: 'inside',
+          formatter: '{c}' // show value inside each slice
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 24,
+            fontWeight: 'bold'
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: [
+          { value: 18, name: '> 30 days', itemStyle: { color: '#f2480fff' } },
+          { value: 8, name: '> 7 days && <= 30 days', itemStyle: { color: '#e41725ff' } },
+          { value: 4, name: '<= 7 days', itemStyle: { color: '#1e9bedff' } }
+        ]
+      },
+      {
+        // This is a fake series to put text in the center
+        type: 'pie',
+        radius: ['0%', '40%'],
+        label: {
+          position: 'center',
+          fontSize: 20,
+          fontWeight: 'bold',
+          formatter: 'Dashboard'
+        },
+        data: [{ value: 1, name: '' }],
+        tooltip: { show: false },
+        itemStyle: {
+          color: '#fff' // inner circle color
+        }
+      }
+    ]
+  });
+}
+
+// users
+const userChartTarget = document.getElementById('pieChart_Users');
+
+if (userChartTarget) {
+  const myChart = echarts.init(userChartTarget);
+
+  // Original user data
+  const rawData = [
+    { value: 1, name: 'Admin', color: '#1e9bedff' },
+    { value: 3, name: 'Publisher', color: '#0a0735ff' },
+    { value: 2, name: 'Viewer', color: '#e67e22' }
+  ];
+
+  // Find max value
+  const maxVal = Math.max(...rawData.map(d => d.value));
+
+  // Reverse transform
+  const chartData = rawData.map(d => ({
+    value: maxVal - d.value + 1, // reverse sizing
+    name: d.name,
+    itemStyle: { color: d.color },
+    labelValue: d.value // keep original for labels/tooltip
+  }));
+
+  myChart.setOption({
+    tooltip: {
+      trigger: 'item',
+      formatter: ({ data }) => `${data.name}: ${data.labelValue}`
+    },
+    legend: {
+      orient: 'horizontal',
+      bottom: 0,
+      left: 'center'
+    },
+    series: [
+      {
+        name: 'Charts',
+        type: 'pie',
+        radius: ['50%', '70%'],
+        avoidLabelOverlap: false,
+        label: {
+          show: true,
+          position: 'inside',
+          formatter: ({ data }) => data.labelValue // show original values inside slices
+        },
+        labelLine: { show: false },
+        data: chartData
+      },
+      {
+        // Center label
+        type: 'pie',
+        radius: ['0%', '40%'],
+        label: {
+          position: 'center',
+          fontSize: 20,
+          fontWeight: 'bold',
+          formatter: 'Dashboard'
+        },
+        data: [{ value: 1 }],
+        tooltip: { show: false },
+        itemStyle: { color: '#fff' }
+      }
+    ]
+  });
+}
+
 
 // ...existing code...
 

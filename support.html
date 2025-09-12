@@ -9,7 +9,7 @@
 </head>
 
 <body><!-- Hidden checkbox for CSS-only toggle -->
-  <input type="checkbox" id="sidebarToggle" class="d-none" checked="false"/>
+   <input type="checkbox" id="sidebarToggle" class="d-none" checked="false"/>
   <!-- Toggle button -->
   <label for="sidebarToggle" class="sidebar-toggle-label bg-info" title="Toggle sidebar">
     <i class="bi bi-list"></i>
@@ -23,22 +23,10 @@
           <span class="sidebar-title">Dashboard</span>
         </a>
       </li>
-      <li class="mb-3">
+       <li class="mb-3">
         <a href="#" class="d-flex align-items-center text-decoration-none">
-          <i class="bi bi-graph-up me-2"></i>
-          <span class="sidebar-title">Analytics</span>
-        </a>
-      </li>
-      <li class="mb-3">
-        <a href="#" class="d-flex align-items-center text-decoration-none">
-          <i class="bi bi-people me-2"></i>
-          <span class="sidebar-title">Users</span>
-        </a>
-      </li>
-      <li class="mb-3">
-        <a href="#" class="d-flex align-items-center text-decoration-none">
-          <i class="bi bi-gear me-2"></i>
-          <span class="sidebar-title">Settings</span>
+          <i class="bi bi-card-checklist me-2"></i>
+          <span class="sidebar-title">Ticket List</span>
         </a>
       </li>
       <li>
@@ -48,25 +36,40 @@
         </a>
       </li>
     </ul>
+    <br>
+   <div class="me-auto p-3 text-center" style="width: 100%; max-width: 280px;">
+  <form role="search" class="d-flex flex-column align-items-center">
+
+    <!-- Icon + Title -->
+    <div class="mb-3">
+      <i class="bi bi-stars" style="font-size: 2rem; color: #d63384;"></i>
+      <h5 class="mt-2 fw-bold" 
+          style="background: linear-gradient(90deg, #d63384, #fd7e14);
+                 -webkit-background-clip: text;
+                 -webkit-text-fill-color: transparent;">
+        Ask AI
+      </h5>
+    </div>
+
+    <!-- Input group -->
+    <div class="input-group">
+      <input class="form-control" type="search" placeholder="Ask me anything" aria-label="Search">
+      <button class="btn btn-light border" type="submit">
+        <i class="bi bi-send"></i>
+      </button>
+    </div>
+
+  </form>
+</div>
   </aside>
   <!-- Main content and navbar -->
   <nav class="navbar navbar-expand-md mb-4 ms-5">
     <div class="container-fluid">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <img src="/scalebi_logo.jpg" width="40" height="32" alt="ScaleBI logo">
+        <img src="/scalebi_logo.jpg" width="40" height="38" alt="ScaleBI logo">
         <span class="fs-4">ScaleBI</span>
       </a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="me-auto mb-2 px-4 mb-md-0 w-75">
-          <form class="d-flex" role="search">
-            <div class="input-group">
-              <span class="input-group-text" id="basic-addon1">
-                <i class="bi bi-magic"></i>
-              </span>
-              <input class="form-control" type="search" placeholder="Ask AI" aria-label="Search">
-            </div>
-          </form>
-        </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
         
         <button id="darkModeBtn" class="btn px-4">
           <i class="bi bi-moon"></i>
