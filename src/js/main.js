@@ -12,6 +12,49 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 import * as echarts from 'echarts';
 import { bottom } from '@popperjs/core';
 
+
+// Sidebar toggle logic
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.getElementById('sidebarToggle');
+  const sidebar = document.querySelector('.sidebar');
+  const label = document.querySelector('.sidebar-toggle-label');
+  const overlay = document.querySelector('.overlay');
+  if (!toggle || !sidebar) return;
+
+  // threshold to decide "open" vs "closed"
+  const OPEN_WIDTH_THRESHOLD = 100;
+
+  const isSidebarOpen = () => sidebar.offsetWidth > OPEN_WIDTH_THRESHOLD;
+
+  // Always collapse when closing
+  const closeIfOpen = () => {
+    if (!isSidebarOpen()) return;
+    toggle.checked = true;   // ✅ explicitly collapse
+    updateOverlay();
+  };
+
+  const updateOverlay = () => {
+    if (!overlay) return;
+    overlay.style.display = isSidebarOpen() ? 'block' : 'none';
+  };
+
+  document.addEventListener('click', function (e) {
+    if (!isSidebarOpen()) return;
+    if (sidebar.contains(e.target) || (label && label.contains(e.target))) return;
+    closeIfOpen();
+  });
+
+  if (overlay) overlay.addEventListener('click', closeIfOpen);
+
+  sidebar.addEventListener('click', (e) => e.stopPropagation());
+
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeIfOpen(); });
+
+  toggle.addEventListener('change', updateOverlay);
+  updateOverlay();
+});
+
+
 // Dashboards (safe init only if element exists)
 const barChartTarget = document.getElementById('barChart');
 
@@ -328,7 +371,6 @@ window.loadChartData = function(period) {
 
 // Load default
 window.loadChartData("7");
-
 
 
 // ...existing code...
